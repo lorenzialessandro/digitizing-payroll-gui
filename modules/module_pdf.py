@@ -8,9 +8,12 @@ def split_pdf(input_pdf_path, output_folder):
         page = pdf_document[page_num]
 
         page_text = page.get_text("text") # get page text
-        fiscal_code = extract_fiscal_code(page_text) #search cf
-        
-        output_pdf_path = f"{output_folder}/{fiscal_code}.pdf"
+
+        fiscal_code = find_fiscal_code(page_text) #search cf
+        month = find_first_month(page_text) #search month
+
+        if(fiscal_code != None and month != None):
+            output_pdf_path = f"{output_folder}/{fiscal_code}_{month}.pdf"
 
         
         output_pdf = fitz.open()
@@ -23,7 +26,7 @@ def split_pdf(input_pdf_path, output_folder):
         # print(f"Page {page_num + 1} saved to {output_pdf_path}")
 
 
-def extract_fiscal_code(text):
+def find_fiscal_code(text):
     code_match = re.search(r'\b([A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z])\b', text)
 
     # return
@@ -31,3 +34,21 @@ def extract_fiscal_code(text):
         return code_match.group(0)
     else:
         return None
+
+import re
+
+def find_first_month(text):
+    months = [
+        'GENNAIO', 'FEBBRAIO', 'MARZO', 'APRILE', 'MAGGIO', 'GIUGNO',
+        'LUGLIO', 'AGOSTO', 'SETTEMBRE', 'OTTOBRE', 'NOVEMBRE', 'DICEMBRE'
+    ]
+
+    pattern = re.compile(r'\b(?:' + '|'.join(months) + r')\b', re.IGNORECASE)
+    match = pattern.search(text)
+
+    #return
+    if match:
+        return match.group()
+    else:
+        return None
+
