@@ -1,6 +1,7 @@
 import win32com.client
+import os
 
-def create_draft_email(subject, body, to, cc=None, bcc=None, attachments=None):
+def create_draft_email(subject, body, to, cc=None, bcc=None, path_attachment=None):
     outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
     draft = outlook.GetDefaultFolder(16).Items.Add(0)
 
@@ -14,10 +15,12 @@ def create_draft_email(subject, body, to, cc=None, bcc=None, attachments=None):
     if bcc:
         draft.BCC = bcc
 
-    # Attach files
-    if attachments:
-        for attachment in attachments:
-            draft.Attachments.Add(attachment)
+    #print(attachments)
+
+    
+    # Attach file
+    if(os.path.isfile(path_attachment)):
+        draft.Attachments.Add(path_attachment)
 
     # Save the draft
     draft.Save()

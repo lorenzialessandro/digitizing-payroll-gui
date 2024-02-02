@@ -18,6 +18,5 @@ for file_name in os.listdir(folder_path):
         file_name_substring = file_name.split('_')[0]
         res = m.search_excel("data/input/sheet.xlsx", file_name_substring) 
         if res is not None:
-            print(res)
-            m.create_draft_email("Cedolino", "In allegato", res, None, None, None)
-            # create_draft_email(res, file_name)
+             m.create_draft_email("Cedolino", "In allegato", res, None, None, path_attachment=os.path.abspath(file_path))
+        
