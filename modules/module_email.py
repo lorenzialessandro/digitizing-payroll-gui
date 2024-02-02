@@ -14,9 +14,6 @@ def create_draft_email(subject, body, to, cc=None, bcc=None, path_attachment=Non
         draft.CC = cc
     if bcc:
         draft.BCC = bcc
-
-    #print(attachments)
-
     
     # Attach file
     if(os.path.isfile(path_attachment)):
@@ -25,4 +22,4 @@ def create_draft_email(subject, body, to, cc=None, bcc=None, path_attachment=Non
     # Save the draft
     draft.Save()
 
-    print("Draft email created successfully.")
+    # print("Draft email created successfully.")

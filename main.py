@@ -1,18 +1,16 @@
 import modules as m
 import os
 
+
+output_folder_path = 'data/output/' # Specify the folder path
+
+m.remove_files_from_folder(output_folder_path)
+
 m.split_pdf("data/input/cedolino.pdf","data/output/")
 
 
-
-# print(m.search_excel("data/input/sheet.xlsx", "RSSMRA75L24F205O"))
-
-
-
-folder_path = 'data/output/' # Specify the folder path
-
-for file_name in os.listdir(folder_path):
-    file_path = os.path.join(folder_path, file_name)
+for file_name in os.listdir(output_folder_path):
+    file_path = os.path.join(output_folder_path, file_name)
 
     if os.path.isfile(file_path):
         file_name_substring = file_name.split('_')[0]

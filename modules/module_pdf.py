@@ -52,3 +52,17 @@ def find_first_month(text):
     else:
         return None
 
+import os
+
+def remove_files_from_folder(folder_path):
+    try:
+        files = os.listdir(folder_path)
+
+        for file_name in files:
+            file_path = os.path.join(folder_path, file_name)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
