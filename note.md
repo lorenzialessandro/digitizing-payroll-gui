@@ -44,3 +44,5 @@ my_project/
 └── docs/
     └── documentation.md
 ```
+
+![Alt](https://repobeats.axiom.co/api/embed/f6cee0ee695723ff0cc2f9713f47a489866c5b71.svg "Repobeats analytics image")
