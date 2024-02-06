@@ -35,12 +35,13 @@ def process_files():
     pdf_file = pdf_entry.get()
     excel_file = excel_entry.get()
     # Do something with the files
-    print("PDF file:", pdf_file)
-    print("Excel file:", excel_file)
+    print("PDF file:", pdf_file) #debug
+    print("Excel file:", excel_file) #debug
 
     # --------------------------------------
 
     output_folder_path = 'data/output/' # Specify the folder path
+    m.create_folder(output_folder_path) #create the folder
     m.remove_files_from_folder(output_folder_path)
     m.split_pdf(pdf_file,output_folder_path)
 

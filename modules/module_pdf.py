@@ -64,5 +64,13 @@ def remove_files_from_folder(folder_path):
                 os.remove(file_path)
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}") #error
 
+
+def create_folder(output_folder):
+    if not os.path.exists(output_folder):
+        try:
+            os.makedirs(output_folder)
+            print(f"Folder '{output_folder}' created successfully.") #debug
+        except OSError as e:
+            print(f"Failed to create folder '{output_folder}': {e}") #error

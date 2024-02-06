@@ -22,7 +22,7 @@ def create_draft_email(subject, body, to, cc=None, bcc=None, path_attachment=Non
     # Save the draft
     draft.Save()
 
-    print("Draft email created successfully.")
+    print("Draft email created successfully.") #debug
     
 
 def send_all_drafts():
@@ -35,7 +35,7 @@ def send_all_drafts():
     for draft in drafts:
         if draft.Subject and "cedolino" in draft.Subject.lower():  # Check if the subject contains "Cedolino"
             try:
-                print(f"Sent draft: {draft.Subject}")
+                print(f"Sent draft: {draft.Subject}") #debug
                 draft.Send()  # Send the draft
             except Exception as e:
-                print(f"Error sending draft '{draft.Subject}': {e}")
+                print(f"Error sending draft '{draft.Subject}': {e}") #error
