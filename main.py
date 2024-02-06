@@ -40,8 +40,10 @@ def process_files():
 
     # --------------------------------------
 
-    output_folder_path = 'data/output/' # Specify the folder path
+
+    output_folder_path = '.output' # Specify the folder path
     m.create_folder(output_folder_path) #create the folder
+    os.system("attrib +h .output") #make the folder hidden
     m.remove_files_from_folder(output_folder_path)
     m.split_pdf(pdf_file,output_folder_path)
 
@@ -67,7 +69,6 @@ def send_email():
 
 # --------------------------------------
 # --------------------------------------
-
 
 root = tk.Tk()
 root.title("Gestione e invio cedolini")
