@@ -1,5 +1,6 @@
 import fitz  # PyMuPDF
 import re
+import os
 
 def split_pdf(input_pdf_path, output_folder):
     pdf_document = fitz.open(input_pdf_path)
@@ -35,7 +36,6 @@ def find_fiscal_code(text):
     else:
         return None
 
-import re
 
 def find_first_month(text):
     months = [
@@ -52,7 +52,7 @@ def find_first_month(text):
     else:
         return None
 
-import os
+
 
 def remove_files_from_folder(folder_path):
     try:

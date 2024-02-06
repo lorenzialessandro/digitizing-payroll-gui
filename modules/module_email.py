@@ -33,7 +33,7 @@ def send_all_drafts():
     drafts = drafts_folder.Items
 
     for draft in drafts:
-        if draft.Subject:  # Check if the draft has a subject (to exclude empty drafts)
+        if draft.Subject and "cedolino" in draft.Subject.lower():  # Check if the subject contains "Cedolino"
             try:
                 print(f"Sent draft: {draft.Subject}")
                 draft.Send()  # Send the draft
